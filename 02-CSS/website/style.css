@@ -146,3 +146,17 @@ footer {
     background: #f1f5f9;
     padding: 16px;
 }
+
+/* 响应式 */
+@media (max-width: 600px) {
+    .form-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .form-group label {
+        min-width: auto;
+    }
+    nav ul {
+        gap: 10px;
+    }
+}
