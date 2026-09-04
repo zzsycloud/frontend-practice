@@ -33,15 +33,93 @@
 
                     <div class="form-group">
                         <label for="name">姓名 <span class="required-star">*</span> :</label>
-                        <input type="text" id="name" name="name" placeholder="请输入真实姓名">
+                        <input type="text" id="name" name="name" required placeholder="请输入真实姓名">
                     </div>
 
                     <div class="form-group">
                         <label for="studentId">学号（11位数字） <span class="required-star">*</span> :</label>
-                        <input type="text" id="studentId" name="studentId" placeholder="请输入11位学号">
+                        <input type="text" id="studentId" name="studentId" 
+                               required pattern="\d{11}" maxlength="11" 
+                               placeholder="请输入11位学号">
                     </div>
 
-                    <!-- 其余控件暂时省略，留到第二次提交 -->
+                    <div class="form-group">
+                        <label for="email">邮箱 :</label>
+                        <input type="email" id="email" name="email" placeholder="example@stu.edu.cn">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">设置密码（6~12位） <span class="required-star">*</span> :</label>
+                        <input type="password" id="password" name="password" 
+                               required minlength="6" maxlength="12" 
+                               placeholder="6~12位字母或数字">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="age">年龄 :</label>
+                        <input type="number" id="age" name="age" min="16" max="30" placeholder="16~30">
+                    </div>
+
+                    <div class="form-group">
+                        <label>性别 <span class="required-star">*</span> :</label>
+                        <div class="radio-group">
+                            <input type="radio" id="male" name="gender" value="男" required>
+                            <label for="male">男</label>
+                            <input type="radio" id="female" name="gender" value="女">
+                            <label for="female">女</label>
+                            <input type="radio" id="other" name="gender" value="其他">
+                            <label for="other">其他</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="department">院系 :</label>
+                        <select id="department" name="department">
+                            <option value="">请选择</option>
+                            <option value="计算机">计算机学院</option>
+                            <option value="艺术">艺术学院</option>
+                            <option value="经管">经管学院</option>
+                            <option value="理学">理学院</option>
+                        </select>
+                    </div>
+                </fieldset>
+
+                <!-- 报名详情 -->
+                <fieldset>
+                    <legend>📌 报名详情</legend>
+
+                    <div class="form-group">
+                        <label>擅长领域（可多选）:</label>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="skill1" name="skills" value="人像">
+                            <label for="skill1">人像</label>
+                            <input type="checkbox" id="skill2" name="skills" value="风光">
+                            <label for="skill2">风光</label>
+                            <input type="checkbox" id="skill3" name="skills" value="纪实">
+                            <label for="skill3">纪实</label>
+                            <input type="checkbox" id="skill4" name="skills" value="微距">
+                            <label for="skill4">微距</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="joinDate">预计加入日期 :</label>
+                        <input type="date" id="joinDate" name="joinDate">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="intro">个人简介 / 摄影经历 :</label>
+                        <textarea id="intro" name="intro" rows="4" maxlength="200" placeholder="请简要介绍自己，限200字以内"></textarea>
+                    </div>
+                </fieldset>
+
+                <!-- 作品上传 -->
+                <fieldset>
+                    <legend>🖼️ 作品上传（可选）</legend>
+                    <div class="form-group">
+                        <label for="portfolio">上传代表作品（图片）:</label>
+                        <input type="file" id="portfolio" name="portfolio" accept="image/*">
+                    </div>
                 </fieldset>
 
                 <div class="form-actions">

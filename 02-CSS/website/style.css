@@ -76,18 +76,41 @@ legend { font-weight: 700; font-size: 1.2rem; padding: 0 10px; }
     gap: 6px 12px;
 }
 .form-group label { min-width: 120px; font-weight: 500; }
-.form-group input {
+.form-group input, 
+.form-group select, 
+.form-group textarea {
     flex: 1;
     min-width: 200px;
     padding: 8px 12px;
     border: 1px solid #cbd5e1;
     border-radius: 6px;
     font-size: 1rem;
+    background: white;
 }
-.form-group input:focus {
+.form-group input:focus, 
+.form-group select:focus, 
+.form-group textarea:focus {
     outline: none;
     border-color: #2563eb;
     box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+}
+
+/* radio & checkbox 内联 */
+.radio-group, .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+    align-items: center;
+}
+.radio-group input, .checkbox-group input {
+    flex: 0 0 auto;
+    margin-right: 2px;
+    min-width: auto;
+}
+.radio-group label, .checkbox-group label {
+    min-width: auto;
+    font-weight: 400;
+    margin-right: 8px;
 }
 
 .form-actions {
