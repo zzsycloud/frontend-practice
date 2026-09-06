@@ -1,0 +1,71 @@
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            padding-top: 70px;
+            background: #f8f9fa;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            padding: 4rem 0;
+            margin-bottom: 2rem;
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .card-photo {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .card-photo:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+        }
+        .card-photo img {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+        }
+        .card-photo .card-body {
+            background: white;
+        }
+        /* 新增表单区块样式 */
+        .form-section {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+        footer {
+            background: #1a1a2e;
+            color: rgba(255,255,255,0.7);
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        /* 响应式微调（第三次新增） */
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero {
+                padding: 2.5rem 0;
+                border-radius: 0 0 20px 20px;
+            }
+        }
+        @media (min-width: 768px) and (max-width: 991px) {
+            .card-photo img {
+                height: 180px;
+            }
+        }
