@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>任务一：流式排版 clamp() 与 min()</title>
+    <style>
+        /* 容器宽度：取 90% 视口宽度 与 800px 中的较小值，避免大屏过宽 */
+        .container {
+            width: min(90%, 800px);
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+        }
+
+        /* 主标题：最小 1.8rem，首选 5vw + 1rem，最大 4.5rem */
+        h1 {
+            font-size: clamp(1.8rem, 5vw + 1rem, 4.5rem);
+            color: #2c3e50;
+            margin-bottom: 0.2rem;
+        }
+
+        /* 副标题：最小 1.2rem，首选 3vw + 0.5rem，最大 2.5rem */
+        h2 {
+            font-size: clamp(1.2rem, 3vw + 0.5rem, 2.5rem);
+            color: #34495e;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.3rem;
+        }
+
+        /* 正文段落：最小 1rem，首选 1.5vw + 0.8rem，最大 1.4rem */
+        p {
+            font-size: clamp(1rem, 1.5vw + 0.8rem, 1.4rem);
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* 卡片内边距：最小 12px，首选 2vw，最大 30px */
+        .card {
+            background: #f8f9fa;
+            padding: clamp(12px, 2vw, 30px);
+            margin-top: 20px;
+            border-radius: 6px;
+            border-left: 6px solid #e67e22;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>clamp() 实现流式标题</h1>
+        <h2>副标题</h2>
+        <p>原神启动</p>
+        <div class="card">
+            <p><strong>💡 验证方法：</strong>将浏览器窗口从手机尺寸拖到桌面尺寸，标题、副标题、正文和卡片内边距均平滑过渡，无突兀跳变。</p>
+        </div>
+        <p style="margin-top: 20px; font-size: 0.9rem; color: #999;">
+            当前容器宽度：<span id="widthDisplay">--</span> px（使用 min(90%, 800px) 控制）
+        </p>
+    </div>
+</body>
+</html>

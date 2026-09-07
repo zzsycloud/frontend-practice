@@ -6,6 +6,38 @@
   .card .card-title {
     color: #0b5ed7;
   }
+    @media print {
+    /* ① 隐藏导航栏 */
+    .navbar {
+      display: none !important;
+    }
+
+    /* ② 隐藏页脚 */
+    footer {
+      display: none !important;
+    }
+
+    /* ③ 正文强制单栏显示 */
+    /* 让每个卡片占满整行，取消Bootstrap的栅格分栏 */
+    .row > .col-md-6,
+    .row > .col-lg-4 {
+      flex: 0 0 100% !important;   /* 宽度强制100% */
+      max-width: 100% !important;
+    }
+
+    /* ④ 白底黑字，去掉背景色 */
+    body {
+      background: #fff !important;
+      color: #000 !important;
+    }
+
+    /* ⑤ 卡片也强制白底黑字，去掉阴影 */
+    .card {
+      background: #fff !important;
+      border: 1px solid #ccc !important;
+      box-shadow: none !important;
+    }
+  }
 </style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,6 +91,11 @@
       </div>
     </div>
   </div>
+
+  <!-- 页脚 -->
+<footer class="bg-body-tertiary text-center py-3 mt-4">
+  <p class="mb-0">© 2026 前端课程墙 · 仅供学习参考</p>
+</footer>
 
   <!-- Bootstrap JS 可选，但按钮无需交互可不加 -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
