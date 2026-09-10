@@ -27,6 +27,55 @@
 
         console.log(" === 摄影社外拍活动费用统计工具启动 ===");
         console.log("当前原始数据:", rawMembers);
+
+                /**
+         * 多字段排序（对应研究任务1：排序深入研究）
+         * 规则：先按器材名称字母升序，若器材相同，再按总费用降序
+         */
+        function sortMembers(members) {
+            return [...members].sort((a, b) => {
+                // 第一优先级：按器材名称排序 (localeCompare 用于中文字符串比较)
+                if (a.gear !== b.gear) {
+                    return a.gear.localeCompare(b.gear, 'zh');
+                }
+                // 第二优先级：按总费用降序排列
+                const totalA = a.rent + a.activityFee;
+                const totalB = b.rent + b.activityFee;
+                return totalB - totalA;
+            });
+        }
+
+        /**
+         * 性能对比实验（对应研究任务3）
+         */
+        function performanceTest(members) {
+            console.log("\n⏱️ === 性能对比实验 (For 循环 vs Reduce) ===");
+            
+            console.time('for循环耗时');
+            let totalFor = 0;
+            for (let i = 0; i < members.length; i++) {
+                totalFor += members[i].rent + members[i].activityFee;
+            }
+            console.timeEnd('for循环耗时');
+
+            console.time('reduce耗时');
+            const totalReduce = members.reduce((sum, m) => sum + m.rent + m.activityFee, 0);
+            console.timeEnd('reduce耗时');
+
+            console.log(`✅ 结果验证: 两则总额一致: ${totalFor === totalReduce}`);
+        }
+
+        // ==================== 补充主流程输出 ====================
+        const sortedMembers = sortMembers(validMembers);
+        console.log("\n🔄 === 按器材与费用排序后 (先按器材升序，再按总费用降序) ===");
+        console.table(sortedMembers.map(m => ({
+            器材: m.gear,
+            姓名: m.name,
+            总费用: m.rent + m.activityFee
+        })));
+
+        performanceTest(validMembers);
+        console.log("\n🎉 统计完成，程序正常退出。");
     </script>
 </body>
 </html>

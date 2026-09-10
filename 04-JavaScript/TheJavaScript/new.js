@@ -39,4 +39,4 @@
         console.log("合法名单数据:", validMembers);
         
         const totalFee = calculateTotalFee(validMembers);
-        console.log(`活动总费用统计：${totalFee} 元`);
+        console.log(` 活动总费用统计：${totalFee} 元`);
