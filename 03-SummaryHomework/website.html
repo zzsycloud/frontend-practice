@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>光影摄影社 · 招新</title>
-    <!-- Bootstrap 5.3.2 CSS -->
+    <!-- Bootstrap  CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
    
     <link rel="stylesheet" href="style.css" />
@@ -78,36 +78,170 @@
             <div class="card card-photo h-100" style="border:none; border-radius:15px; box-shadow:0 4px 12px rgba(0,0,0,0.1); transition:transform 0.3s, box-shadow 0.3s;">
                 <img src="https://picsum.photos/seed/1/400/300" class="card-img-top" alt="作品1" style="height:200px; object-fit:cover; width:100%;" />
                 <div class="card-body" style="background:#fff;">
-                    <h5 class="card-title">《城市脉络》</h5>
+                    <h5 class="card-title">《建筑几何》</h5>
                     <p class="card-text text-muted small">作者：小明 · 索尼A7</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="card card-photo h-100">
+                    <img src="https://picsum.photos/seed/2/400/300" class="card-img-top" alt="作品2" />
+                    <div class="card-body">
+                        <h5 class="card-title">《办公室》</h5>
+                        <p class="card-text text-muted small">作者：小芳 · 佳能5D</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="card card-photo h-100">
+                    <img src="https://picsum.photos/seed/3/400/300" class="card-img-top" alt="作品3" />
+                    <div class="card-body">
+                        <h5 class="card-title">《自然》</h5>
+                        <p class="card-text text-muted small">作者：阿杰 · 富士X100</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="card card-photo h-100">
+                    <img src="https://picsum.photos/seed/4/400/300" class="card-img-top" alt="作品4" />
+                    <div class="card-body">
+                        <h5 class="card-title">《水果物语》</h5>
+                        <p class="card-text text-muted small">作者：小雨 · 尼康Z6</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="card card-photo h-100">
+                    <img src="https://picsum.photos/seed/5/400/300" class="card-img-top" alt="作品5" />
+                    <div class="card-body">
+                        <h5 class="card-title">《海洋》</h5>
+                        <p class="card-text text-muted small">作者：小刚 · 手机拍摄</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="card card-photo h-100">
+                    <img src="https://picsum.photos/seed/6/400/300" class="card-img-top" alt="作品6" />
+                    <div class="card-body">
+                        <h5 class="card-title">《梳妆台》</h5>
+                        <p class="card-text text-muted small">作者：小美 · 索尼A7R</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 <!-- ===== 招新报名 ===== -->
-<section id="join" class="container mb-5">
-    <div class="form-section" style="background:#fff; border-radius:20px; padding:2rem; box-shadow:0 8px 30px rgba(0,0,0,0.08);">
-        <h2 class="fw-bold text-center mb-2">加入我们</h2>
-        <p class="text-center" style="color:#475569;">请如实填写以下信息，所有带 <span style="color:#dc2626; font-weight:700;">*</span> 的为必填项。</p>
-        <form action="#" method="post">
-            <fieldset style="border:1px solid #d1d5db; border-radius:10px; padding:1.25rem 1.5rem; background:#fafbfc; margin-bottom:1.5rem;">
-                <legend style="font-weight:700; font-size:1.1rem; padding:0 10px; width:auto; float:none;">个人信息</legend>
-                <!-- 姓名、学号、邮箱、密码、年龄、性别（radio）、院系（select）等，具体字段见第二次作业 -->
-                <div class="form-group mb-3">
-                    <label for="name" class="form-label">姓名 <span style="color:#dc2626;">*</span></label>
-                    <input type="text" class="form-control" id="name" name="name" required placeholder="请输入真实姓名" />
+ <section id="join" class="container mb-5">
+        <div class="form-section">
+            <h2 class="fw-bold text-center mb-2">加入我们</h2>
+            <p class="text-center hint">
+                请如实填写以下信息，所有带 <span class="required-star">*</span> 的为必填项。
+            </p>
+
+            <form id="signupForm" action="#" method="post">
+                <!-- 个人信息 -->
+                <fieldset>
+                    <legend>个人信息</legend>
+                    <div class="form-group">
+                        <label for="name" class="form-label">姓名 <span class="required-star">*</span></label>
+                        <input type="text" class="form-control" id="name" name="name" required placeholder="请输入真实姓名" />
+                    </div>
+                    <div class="form-group">
+                        <label for="studentId" class="form-label">学号（11位数字） <span class="required-star">*</span></label>
+                        <input type="text" class="form-control" id="studentId" name="studentId"
+                               required pattern="\d{11}" maxlength="11" placeholder="请输入11位学号" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">邮箱</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="example@stu.edu.cn" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="form-label">设置密码（6~12位） <span class="required-star">*</span></label>
+                        <input type="password" class="form-control" id="password" name="password"
+                               required minlength="6" maxlength="12" placeholder="6~12位字母或数字" />
+                    </div>
+                    <div class="form-group">
+                        <label for="age" class="form-label">年龄</label>
+                        <input type="number" class="form-control" id="age" name="age" min="16" max="30" placeholder="16~30" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">性别 <span class="required-star">*</span></label>
+                        <div class="inline-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="male" name="gender" value="男" required />
+                                <label class="form-check-label" for="male">男</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="female" name="gender" value="女" />
+                                <label class="form-check-label" for="female">女</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="department" class="form-label">院系</label>
+                        <select class="form-select" id="department" name="department">
+                            <option value="">请选择</option>
+                            <option value="计算机">计算机学院</option>
+                            <option value="艺术">艺术学院</option>
+                            <option value="经管">经管学院</option>
+                            <option value="理学">理学院</option>
+                        </select>
+                    </div>
+                </fieldset>
+
+                <!-- 报名详情 -->
+                <fieldset>
+                    <legend>报名详情</legend>
+                    <div class="form-group">
+                        <label class="form-label">擅长领域（可多选）</label>
+                        <div class="inline-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="skill1" name="skills" value="人像" />
+                                <label class="form-check-label" for="skill1">人像</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="skill2" name="skills" value="风光" />
+                                <label class="form-check-label" for="skill2">风光</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="skill3" name="skills" value="纪实" />
+                                <label class="form-check-label" for="skill3">纪实</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="skill4" name="skills" value="微距" />
+                                <label class="form-check-label" for="skill4">微距</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="joinDate" class="form-label">预计加入日期</label>
+                        <input type="date" class="form-control" id="joinDate" name="joinDate" />
+                    </div>
+                    <div class="form-group">
+                        <label for="intro" class="form-label">个人简介 / 摄影经历</label>
+                        <textarea class="form-control" id="intro" name="intro" rows="4"
+                                  maxlength="200" placeholder="请简要介绍自己，限200字以内"></textarea>
+                    </div>
+                </fieldset>
+
+                <!-- 作品上传 -->
+                <fieldset>
+                    <legend>作品上传（可选）</legend>
+                    <div class="form-group">
+                        <label for="portfolio" class="form-label">上传代表作品（图片）</label>
+                        <input type="file" class="form-control" id="portfolio" name="portfolio" accept="image/*" />
+                    </div>
+                </fieldset>
+
+                <!-- 提交 / 重置 -->
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-dark btn-lg">提交报名</button>
+                    <button type="reset" class="btn btn-secondary btn-lg">重置</button>
                 </div>
-            </fieldset>
-            <!-- 更多 fieldset 用于报名详情和作品上传 -->
-            <div class="text-center">
-                <button type="submit" class="btn btn-dark btn-lg px-5">提交报名</button>
-                <button type="reset" class="btn btn-secondary btn-lg px-5">重置</button>
-            </div>
-        </form>
-    </div>
-</section>
+            </form>
+        </div>
+    </section>
 
 
 <!-- ===== 页脚 ===== -->
