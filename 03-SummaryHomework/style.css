@@ -1,0 +1,84 @@
+
+* { box-sizing: border-box; }
+body { padding-top: 70px; background: #f8f9fa; }
+
+.navbar-brand { font-weight: 700; letter-spacing: 2px; }
+.navbar-brand .gold { color: #ffd700; }
+
+.hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #fff;
+    padding: 4rem 0;
+    margin-bottom: 2rem;
+    border-radius: 0 0 30px 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+.hero h1 { font-size: 3rem; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+
+.card-photo {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.card-photo:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
+.card-photo img { height: 200px; object-fit: cover; width: 100%; }
+.card-photo .card-body { background: #fff; }
+
+.form-section {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+.form-section .required-star { color: #dc2626; font-weight: 700; margin-left: 2px; }
+.form-section .hint { color: #475569; font-size: 0.95rem; }
+.form-section fieldset {
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem 1.5rem;
+    background: #fafbfc;
+    margin-bottom: 1.5rem;
+}
+.form-section legend {
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 0 10px;
+    width: auto;
+    float: none;
+}
+.form-section .form-group { margin-bottom: 1rem; }
+.form-section .form-group label { font-weight: 500; margin-bottom: 0.25rem; }
+.form-section .inline-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    align-items: center;
+    padding-top: 0.25rem;
+}
+.form-section .form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+.form-section .form-actions .btn { min-width: 120px; border-radius: 30px; font-weight: 600; }
+
+footer {
+    background: #1a1a2e;
+    color: rgba(255,255,255,0.7);
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+@media (max-width: 576px) {
+    .hero h1 { font-size: 2rem; }
+    .hero { padding: 2.5rem 0; border-radius: 0 0 20px 20px; }
+    .form-section { padding: 1.25rem; }
+    .form-section fieldset { padding: 1rem; }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .card-photo img { height: 180px; }
+}
