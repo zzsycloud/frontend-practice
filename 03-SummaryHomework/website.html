@@ -13,7 +13,7 @@
     <!-- ===== 导航栏 ===== -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top shadow">
     <div class="container">
-        <a class="navbar-brand" href="#"><span style="color:#ffd700;">📷</span> 光影摄影社</a>
+        <a class="navbar-brand" href="#"><span style="color:#ffd700;"></span> 光影摄影社</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -64,8 +64,26 @@
         </div>
         <div class="col-md-6 text-center">
             <img src="https://picsum.photos/seed/club/600/400" alt="社团标志图" class="img-fluid rounded shadow" />
-            <p class="text-muted small mt-2">▲ 社团标志 · 光影瞬间</p>
+            <p class="text-muted small mt-2">社团标志 · 光影瞬间</p>
         </div>
+    </div>
+</section>
+
+<!-- ===== 作品精选 ===== -->
+<section id="works" class="container mb-5">
+    <h2 class="text-center fw-bold mb-4">社员作品精选</h2>
+    <div class="row g-4">
+        <!-- 卡片 1-6，省略中间重复结构，仅展示第一张 -->
+        <div class="col-6 col-md-4">
+            <div class="card card-photo h-100" style="border:none; border-radius:15px; box-shadow:0 4px 12px rgba(0,0,0,0.1); transition:transform 0.3s, box-shadow 0.3s;">
+                <img src="https://picsum.photos/seed/1/400/300" class="card-img-top" alt="作品1" style="height:200px; object-fit:cover; width:100%;" />
+                <div class="card-body" style="background:#fff;">
+                    <h5 class="card-title">《城市脉络》</h5>
+                    <p class="card-text text-muted small">作者：小明 · 索尼A7</p>
+                </div>
+            </div>
+        </div>
+        <!-- 其余5张类似，使用 seed=2~6 -->
     </div>
 </section>
 
