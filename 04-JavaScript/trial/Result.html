@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta charset="utf-8"><title>实验2 偶数平方和</title></head>
+<body>
+  <h3>实验2：所有偶数的平方和（一行链式调用）</h3>
+  <p id="out"></p>
+
+  <script>
+    const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    const sum = nums
+      .filter(n => n % 2 === 0)      // 1. 留下偶数
+      .map(n => n * n)               // 2. 变成平方
+      .reduce((a, b) => a + b, 0);   // 3. 累加，初始值 0
+
+    document.getElementById('out').textContent =
+      `${nums.join(', ')} → 偶数的平方和 = ${sum}`;   // 4+16+36+64+100 = 220
+  </script>
+</body>
+</html>

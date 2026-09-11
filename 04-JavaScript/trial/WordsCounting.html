@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta charset="utf-8"><title>实验1 单词计数</title></head>
+<body>
+  <h3>实验1：统计每个单词出现次数</h3>
+  <textarea id="txt" rows="3" cols="60">the quick brown fox jumps over the lazy dog the fox</textarea>
+  <p><button onclick="run()">统计</button></p>
+  <pre id="out"></pre>
+
+  <script>
+    // 核心函数：split 切分 → reduce 计数（用对象当计数器）
+    function countWords(text) {
+      return text.toLowerCase()
+                 .split(/\s+/)          // 按空白切分
+                 .filter(Boolean)       // 去掉空字符串
+                 .reduce((acc, w) => {  // 对象计数
+                   acc[w] = (acc[w] || 0) + 1;
+                   return acc;
+                 }, {});
+    }
+
+    function run() {
+      const text = document.getElementById('txt').value;
+      const result = countWords(text);
+      document.getElementById('out').textContent =
+        Object.entries(result).map(([w, c]) => `${w}: ${c}`).join('\n');
+    }
+  </script>
+</body>
+</html>
