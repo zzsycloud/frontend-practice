@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>摄影社团作品管理</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>摄影社团作品管理</h1>
+        <form id="photo-form">
+            <input type="text" id="title" placeholder="作品名称 (必填)" required>
+            <input type="text" id="author" placeholder="摄影师 (必填)" required>
+            <input type="number" id="rating" placeholder="评分 1-5 (必填)" min="1" max="5" required>
+            <button type="submit">添加作品</button>
+        </form>
+        <p id="error-msg"></p>
+    </header>
+    <main>
+        <input type="text" id="search-input" placeholder="🔍 搜索作品或摄影师...">
+        <p id="total-count">当前共 0 件作品</p>
+        <ul id="photo-list"></ul>
+    </main>
+    <footer>
+        <button id="export-btn" class="export-btn">导出 JSON 数据</button>
+    </footer>
+</body>
+</html>
