@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <button id="add">添加任务</button>
+  <ul id="list">
+    <li>任务1 <button class="del">删除</button></li>
+  </ul>
+  <script>
+    // 1. 事件委托：只需在 ul 上绑定一次事件
+    document.getElementById('list').addEventListener('click', e => {
+      if (e.target.className === 'del') {
+        e.target.parentNode.remove(); // 处理删除
+      }
+      // 这里可以同时处理其他按钮，如编辑等
+    });
+
+    // 2. 对比：如果是传统写法，每次添加都需要给新按钮绑定事件
+    document.getElementById('add').onclick = () => {
+      const li = document.createElement('li');
+      li.innerHTML = '新任务 <button class="del">删除</button>';
+      document.getElementById('list').appendChild(li);
+      
+      // 传统写法需在此处手动绑定：li.querySelector('.del').onclick = function() { li.remove(); }
+      // 而事件委托则不需要，代码量大幅减少。
+    };
+  </script>
+</body>
+</html>

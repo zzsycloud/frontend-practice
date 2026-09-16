@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <ul id="list">
+    <li><span>学习Vue</span> <button class="edit">编辑</button></li>
+  </ul>
+  <script>
+    document.getElementById('list').addEventListener('click', e => {
+      if (e.target.className === 'edit') {
+        const li = e.target.parentNode;
+        const span = li.querySelector('span');
+        const input = document.createElement('input');
+        input.value = span.textContent;
+        
+        li.replaceChild(input, span); // 文本替换为输入框
+        input.focus();
+
+        // 回车保存
+        input.onkeydown = ev => {
+          if (ev.key === 'Enter') {
+            span.textContent = input.value;
+            li.replaceChild(span, input); // 输入框替换回文本
+          }
+        };
+      }
+    });
+  </script>
+</body>
+</html>
