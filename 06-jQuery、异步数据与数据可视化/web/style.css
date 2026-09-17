@@ -1,0 +1,22 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; padding: 20px; }
+header { text-align: center; margin-bottom: 30px; }
+header h1 { color: #2c3e50; margin-bottom: 10px; }
+#time-display { font-size: 14px; color: #7f8c8d; }
+
+#status-container { text-align: center; margin: 50px 0; }
+.status-box { padding: 20px; font-size: 18px; font-weight: bold; border-radius: 8px; display: inline-block; }
+#status-loading { background-color: #e8f4fd; color: #2980b9; }
+#status-error { background-color: #fde8e8; color: #c0392b; }
+#status-empty { background-color: #fef9e7; color: #f39c12; }
+.hidden { display: none !important; }
+
+#controls { text-align: center; margin-bottom: 20px; }
+.filter-btn { padding: 10px 20px; margin: 0 5px; border: 1px solid #3498db; background: #fff; color: #3498db; border-radius: 20px; cursor: pointer; transition: all 0.3s; }
+.filter-btn:hover, .filter-btn.active { background: #3498db; color: #fff; }
+
+#charts { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; }
+.chart-wrapper { flex: 1 1 45%; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.chart-wrapper h3 { font-size: 16px; margin-bottom: 5px; color: #34495e; }
+.source { font-size: 12px; color: #95a5a6; margin-bottom: 15px; }
+footer { text-align: center; margin-top: 40px; font-size: 12px; color: #bdc3c7; }

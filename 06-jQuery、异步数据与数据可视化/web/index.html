@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园摄影社数据看板</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- 引入 ECharts, Chart.js 和 jQuery 的 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>校园摄影社数据看板</h1>
+        <p id="time-display">数据加载耗时计算中...</p>
+    </header>
+
+    <main>
+        <!-- 状态提示区 -->
+        <section id="status-container">
+            <div id="status-loading" class="status-box"> 数据加载中，请稍候...</div>
+            <div id="status-error" class="status-box hidden"> 数据加载失败，请检查网络或JSON路径！</div>
+            <div id="status-empty" class="status-box hidden"> 暂无数据，请等待社团录入。</div>
+        </section>
+
+        <!-- 交互控制区（Commit 3 使用） -->
+        <section id="controls">
+            <button class="filter-btn active" data-filter="all">全部器材</button>
+            <button class="filter-btn" data-filter="佳能">佳能</button>
+            <button class="filter-btn" data-filter="索尼">索尼</button>
+        </section>
+
+        <!-- 图表区 -->
+        <section id="charts" class="hidden">
+            <div class="chart-wrapper">
+                <h3>摄影社器材使用分布</h3>
+                <p class="source">单位：人 | 数据来源：摄影社内部统计</p>
+                <div id="chart1" style="width: 100%; height: 350px;"></div>
+            </div>
+            <div class="chart-wrapper">
+                <h3>2025年摄影社月度投稿量</h3>
+                <p class="source">单位：张 | 数据来源：摄影社投稿系统</p>
+                <canvas id="chart2"></canvas>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 校园摄影社 数据看板</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

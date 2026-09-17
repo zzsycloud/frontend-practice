@@ -1,0 +1,11 @@
+[
+  { "name": "佳能", "value": 42 },
+  { "name": "索尼", "value": 38 },
+  { "name": "尼康", "value": 25 },
+  { "name": "富士", "value": 18 },
+  { "name": "松下", "value": 12 },
+  { "name": "大疆无人机", "value": 15 },
+  { "name": "GoPro", "value": 10 },
+  { "name": "胶片相机", "value": 6 },
+  { "name": "其他", "value": 4 }
+]
