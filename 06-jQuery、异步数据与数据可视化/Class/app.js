@@ -3,10 +3,11 @@ let barChart = null;
 let pieChart = null;
 let lineChart = null;
 
+// async/await 是 Promise.then() 链式写法的语法糖。
 const loadData = async () => {
-$('#status').text('加载中...').show();
- try {
- const response = await fetch('data/books.json');
+  $('#status').text('加载中...').show();
+  try {
+    const response = await fetch('data/books.json');
     if (!response.ok) {
       throw new Error('HTTP ' + response.status);
     }
@@ -26,6 +27,36 @@ $('#status').text('加载中...').show();
     $('#status').text('加载失败：' + error.message).show();
   }
 };
+
+/*
+// 上面的 async/await 写法，等价于下面的 Promise.then() 链式写法：
+const loadData = () => {
+  $('#status').text('加载中...').show();
+  fetch('data/books.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('HTTP ' + response.status);
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (data.series.length === 0) {
+        $('#status').text('暂无数据').show();
+        return;
+      }
+      state.data = data;
+      $('#sub-title').text(data.title + ' · 数据来源：课程统一数据集');
+      $('#status').hide();
+      renderCards(data);
+      renderBarChart(data);
+      renderPieChart(data);
+      renderLineChart(data);
+    })
+    .catch(error => {
+      $('#status').text('加载失败：' + error.message).show();
+    });
+};
+*/
 const renderCards = (data) => {
   const months = data.months;
   data.series.forEach(s => {
