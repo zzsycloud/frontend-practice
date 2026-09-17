@@ -1,5 +1,6 @@
 const state = { data: null };
 let barChart = null;
+let pieChart = null;
 let lineChart = null;
 
 const loadData = async () => {
@@ -19,6 +20,7 @@ $('#status').text('加载中...').show();
     $('#status').hide();
     renderCards(data);
     renderBarChart(data);
+    renderPieChart(data);
     renderLineChart(data);
   } catch (error) {
     $('#status').text('加载失败：' + error.message).show();
@@ -60,6 +62,32 @@ const renderBarChart = (data) => {
   });
 };
 
+const renderPieChart = (data) => {
+  if (pieChart === null) {
+    pieChart = echarts.init(document.querySelector('#pie-chart'));
+  }
+  pieChart.setOption({
+    title: { text: '各品类总量占比', left: 'center' },
+    tooltip: {
+      trigger: 'item',
+      formatter: '{b}: {c}册 ({d}%)'
+    },
+    legend: { bottom: 0 },
+    series: [{
+      name: '借阅总量',
+      type: 'pie',
+      radius: '60%',
+      data: data.series.map(s => ({
+        name: s.category,
+        value: s.counts.reduce((sum, count) => sum + count, 0)
+      })),
+      label: {
+        formatter: '{b}: {d}%'
+      }
+    }]
+  });
+};
+
 const renderLineChart = (data) => {
   if (lineChart !== null) {
     lineChart.destroy();               
@@ -87,6 +115,7 @@ const renderLineChart = (data) => {
 
 window.addEventListener('resize', () => {
   if (barChart) barChart.resize();
+  if (pieChart) pieChart.resize();
 });
 
 
