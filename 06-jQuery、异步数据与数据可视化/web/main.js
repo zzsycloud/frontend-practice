@@ -14,7 +14,7 @@ function showStatus(state) {
     if (state === 'success') $('#charts').removeClass('hidden');
 }
 
-// 数据加载函数（研究任务1：并行请求）
+// 数据加载函数
 async function loadDashboardData() {
     showStatus('loading');
     const startTime = performance.now(); // 开始计时
@@ -71,6 +71,29 @@ function renderECharts(data) {
         }]
     };
     myECharts.setOption(option, true); // true 表示不合并，重新渲染
+
+    // 图表联动：点击 ECharts 柱状图，Chart.js 过滤对应数据
+    myECharts.off('click'); // 防止重复绑定
+    myECharts.on('click', function(params) {
+        const clickedName = params.name;
+        console.log("点击了:", clickedName);
+
+        // 根据点击的器材名称调整 Chart.js 数据
+        const newData2 = rawData2.map(item => ({
+            month: item.month,
+            count: Math.round(item.count * (clickedName.length / 5))
+        }));
+
+        // 更新 Chart.js
+        myChartJS.data.datasets[0].data = newData2.map(item => item.count);
+        myChartJS.update();
+
+        // 高亮当前柱子
+        myECharts.dispatchAction({
+            type: 'highlight',
+            name: clickedName
+        });
+    });
 }
 
 // 渲染 Chart.js 折线图
@@ -107,4 +130,18 @@ function renderChartJS(data) {
 // 页面加载完成后执行
 $(document).ready(function() {
     loadDashboardData();
+
+    $(document).on('click', '.filter-btn', function() {
+        $('.filter-btn').removeClass('active');
+        $(this).addClass('active');
+
+        const filterValue = $(this).data('filter');
+        let filteredData = rawData1;
+
+        if (filterValue !== 'all') {
+            filteredData = rawData1.filter(item => item.name === filterValue);
+        }
+
+        renderECharts(filteredData);
+    });
 });
