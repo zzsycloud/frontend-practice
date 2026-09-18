@@ -37,9 +37,45 @@ geos.forEach((geo, i) => {
   const angle = (i / geos.length) * Math.PI * 2;
   const mesh = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ color: colors[i] }));
   mesh.position.set(Math.cos(angle) * 1.4, 0.6, Math.sin(angle) * 1.4);
+  mesh.userData.originalColor = mesh.material.color.clone();
   items.add(mesh);
 });
 scene.add(items);
+
+// 点击展品：将鼠标位置映射到相机射线，再找出射线命中的展品
+const raycaster = new THREE.Raycaster();
+const pointer = new THREE.Vector2();
+let selectedItem = null;
+
+const clearHighlight = (mesh) => {
+  if (!mesh) return;
+  mesh.material.emissive.set(0x000000);
+  mesh.scale.setScalar(1);
+};
+
+const highlightItem = (mesh) => {
+  if (selectedItem === mesh) return;
+  clearHighlight(selectedItem);
+  selectedItem = mesh;
+  selectedItem.material.emissive.copy(selectedItem.userData.originalColor).multiplyScalar(0.35);
+  selectedItem.scale.setScalar(1.15);
+};
+
+renderer.domElement.addEventListener('click', (event) => {
+  const rect = renderer.domElement.getBoundingClientRect();
+  pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+  pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+  raycaster.setFromCamera(pointer, camera);
+  const intersections = raycaster.intersectObjects(items.children, false);
+
+  if (intersections.length > 0) {
+    highlightItem(intersections[0].object);
+  } else {
+    clearHighlight(selectedItem);
+    selectedItem = null;
+  }
+});
 
 // 动画：展台整体缓转，展品上下浮动
 const clock = new THREE.Clock();
