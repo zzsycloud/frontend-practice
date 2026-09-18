@@ -65,15 +65,22 @@ scene.add(cameraGroup);
 const photos = []; // 用于后续交互
 const frameGeo = new THREE.BoxGeometry(1.5, 1.2, 0.1);
 const frameMat = new THREE.MeshStandardMaterial({ color: 0xffffff });
-const photoMat = new THREE.MeshStandardMaterial({ color: 0x44aaff, emissive: 0x113355 });
+const textureLoader = new THREE.TextureLoader();
+const imagePaths = [
+    'images/photo1.jpg',
+    'images/photo2.jpg',
+    'images/photo3.jpg',
+    'images/photo4.png'
+];
 
-for (let i = 0; i < 4; i++) {
-    const frame = new THREE.Mesh(frameGeo, frameMat);
+for (let i = 0; i < imagePaths.length; i++) {
+    const frame = new THREE.Mesh(frameGeo, frameMat.clone());
     frame.position.set(-3 + i * 2, 2, -2);
     frame.castShadow = true;
     frame.userData = { title: `摄影作品 ${i + 1}` }; // 添加自定义数据供交互使用
     
-    // 假装内部有一张照片
+    const texture = textureLoader.load(imagePaths[i]);
+    const photoMat = new THREE.MeshStandardMaterial({ map: texture });
     const photo = new THREE.Mesh(new THREE.PlaneGeometry(1.2, 0.9), photoMat);
     photo.position.z = 0.06;
     frame.add(photo);
