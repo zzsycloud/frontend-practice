@@ -41,10 +41,14 @@ geos.forEach((geo, i) => {
 });
 scene.add(items);
 
-// 动画：展台整体缓转，球体自转
+// 动画：展台整体缓转，展品上下浮动
+const clock = new THREE.Clock();
+const baseHeight = items.position.y;
+const floatAmplitude = 0.25;
 const animate = () => {
   requestAnimationFrame(animate);
   items.rotation.y += 0.005;
+  items.position.y = baseHeight + Math.sin(clock.getElapsedTime()) * floatAmplitude;
   renderer.render(scene, camera);
 };
 animate();
