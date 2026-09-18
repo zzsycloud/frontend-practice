@@ -28,19 +28,12 @@ dirLight.position.set(5, 10, 5);
 dirLight.castShadow = true;
 scene.add(dirLight);
 
-// 4. 窗口 Resize 适配
+// 窗口 Resize 适配
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
-
-// 动画循环
-function animate() {
-    requestAnimationFrame(animate);
-    controls.update();
-    renderer.render(scene, camera);
-}
 
 // 1. 展台 (PlaneGeometry / 地面)
 const floorGeometry = new THREE.PlaneGeometry(20, 20);
@@ -89,4 +82,39 @@ for (let i = 0; i < 4; i++) {
     scene.add(frame);
 }
 
+// 点击交互研究 (Raycaster)
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+const infoPanel = document.getElementById('info-panel');
+
+window.addEventListener('click', (event) => {
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    
+    raycaster.setFromCamera(mouse, camera);
+    const intersects = raycaster.intersectObjects(photos);
+    
+    if (intersects.length > 0) {
+        // 变色的核心代码
+        const hitObject = intersects[0].object;
+        hitObject.material.color.set(0xffaa00); // 相框变金色
+        infoPanel.innerText = `当前查看：${hitObject.userData.title}\n点击其它相框可切换`;
+    }
+});
+
+// 动画循环 (加入动画元素)
+function animate() {
+    requestAnimationFrame(animate);
+    controls.update();
+    
+    // 让相机模型缓缓旋转，增加场景活力 (至少一处动画)
+    cameraGroup.rotation.y += 0.005;
+    
+    // 相框轻微上下浮动
+    photos.forEach((photo, index) => {
+        photo.position.y = 2 + Math.sin(Date.now() * 0.002 + index) * 0.1;
+    });
+    
+    renderer.render(scene, camera);
+}
 animate();
