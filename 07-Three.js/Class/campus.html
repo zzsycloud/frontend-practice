@@ -38,8 +38,16 @@ alternate;  dur:  1200;  loop:  true">
 intensity="0.6"></a-light>
 <!--  环境光 -->
 <a-light  type="ambient"  color="#ffffff"  intensity="0.7"></a-light>
+<!--  可点击雕塑：点击后切换颜色  -->
+<a-cone
+position="1.5  1  -4"  radius-bottom="0.7"  radius-top="0.15"  height="2"
+color="#7e57c2"
+onclick="this.setAttribute('color', this.getAttribute('color') === '#7e57c2' ? '#26a69a' : '#7e57c2')">
+</a-cone>
 <!--  相机初始位：稍远处平视校园 -->
-<a-camera  position="0  1.8  2"></a-camera>
+<a-camera  position="0  1.8  2">
+<a-cursor  rayOrigin="mouse"  fuse="false"  color="#ffffff"></a-cursor>
+</a-camera>
 </a-scene>
 </body>
 </html>
