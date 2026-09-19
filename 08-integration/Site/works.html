@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>光影摄影社 · 作品管理</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/nav.js" defer></script>
+  <script src="js/storage.js" defer></script>
+  <script src="js/works.js" defer></script>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <div class="container">
+    <div class="page-header">
+      <h1>🖼️ 作品管理</h1>
+      <p>登记社员投稿作品并打分，数据保存在浏览器本地。</p>
+    </div>
+
+    <section class="block card">
+      <form id="photo-form" class="inline-form" novalidate>
+        <input type="text" id="title" placeholder="作品名称 *" required>
+        <input type="text" id="author" placeholder="摄影师 *" required>
+        <select id="category">
+          <option value="人像">人像</option>
+          <option value="风光">风光</option>
+          <option value="纪实">纪实</option>
+          <option value="微距">微距</option>
+        </select>
+        <input type="number" id="rating" placeholder="评分 1-5 *" min="1" max="5" required>
+        <button type="submit" class="btn">添加作品</button>
+      </form>
+      <p id="error-msg" class="msg error"></p>
+    </section>
+
+    <section class="block">
+      <input type="text" id="search-input" class="search-input" placeholder="搜索作品或摄影师...">
+      <p class="hint">
+        <span id="total-count">当前共 0 件作品</span>
+        <span id="avg-rating" class="badge">平均分 -</span>
+        排序：
+        <select id="sort-select" style="padding:4px 8px;border-radius:6px;border:1px solid #cbd5e1;">
+          <option value="time">按添加时间</option>
+          <option value="rating">按评分从高到低</option>
+          <option value="title">按名称</option>
+        </select>
+      </p>
+      <ul id="photo-list" class="list"></ul>
+      <p>
+        <button id="export-btn" class="btn success small">导出 JSON 数据</button>
+      </p>
+    </section>
+  </div>
+
+  <div id="site-footer"></div>
+</body>
+</html>
