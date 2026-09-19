@@ -78,3 +78,55 @@ document.querySelector('#floor-filter').addEventListener('change', renderRooms);
 document.querySelector('#status-filter').addEventListener('change', renderRooms);
 
 renderRooms();
+
+// ── 使用统计图表（课堂六fetch骨架的复用：四状态齐全）──
+let chart = null;
+
+const renderChart = (data) => {
+  if (chart === null) {
+    chart = echarts.init(document.querySelector('#usage-chart'));
+  }
+  chart.setOption({
+    title: { text: data.title, left: 'center' },
+    tooltip: { trigger: 'axis' },
+    grid: { left: 56, right: 24, bottom: 90 },
+    xAxis: {
+      type: 'category',
+      data: data.rooms.map(r => r.name),
+      axisLabel: { rotate: 38, interval: 0, fontSize: 11 }
+    },
+    yAxis: { type: 'value', name: '座' },
+    series: [{
+      name: '空余座位',
+      type: 'bar',
+      data: data.rooms.map(r => r.seats - r.occupied),
+      itemStyle: { color: '#0d6efd' }
+    }]
+  });
+};
+
+const loadChart = async () => {
+  statusEl.textContent = '加载中...';
+  statusEl.style.display = 'block';
+  try {
+    const response = await fetch('data/data.json');
+    if (!response.ok) {
+      throw new Error('HTTP ' + response.status);
+    }
+    const data = await response.json();
+    if (data.rooms.length === 0) {
+      statusEl.textContent = '暂无数据';
+      return;
+    }
+    statusEl.style.display = 'none';
+    renderChart(data);
+  } catch (error) {
+    statusEl.textContent = '加载失败：' + error.message;
+  }
+};
+
+window.addEventListener('resize', () => {
+  if (chart) chart.resize();
+});
+
+loadChart();
