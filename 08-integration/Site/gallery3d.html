@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>光影摄影社 · 3D 虚拟展馆</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body { overflow: hidden; }
+    #canvas-container { position: fixed; inset: 0; top: 60px; }
+    #info-panel {
+      position: fixed; top: 80px; right: 20px; z-index: 10;
+      background: rgba(0,0,0,0.7); color: #fff; padding: 14px 18px;
+      border-radius: 8px; pointer-events: none; line-height: 1.7; max-width: 260px;
+    }
+    #info-panel h3 { color: var(--accent); font-size: 1rem; margin-bottom: 4px; }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script src="js/nav.js" defer></script>
+  <script type="module" src="js/gallery3d.js"></script>
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div id="canvas-container"></div>
+  <div id="info-panel">
+    <h3>摄影社虚拟展馆</h3>
+    拖拽旋转 / 滚轮缩放<br>
+    点击相框查看作品信息
+  </div>
+</body>
+</html>
