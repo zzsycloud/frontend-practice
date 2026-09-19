@@ -1,0 +1,49 @@
+// 课堂演示两种数据来源：
+// 1. 自习室查询：数组写死在JS里（课堂五筛选模式的复用）
+// 2. 使用统计：fetch加载data/data.json（课堂六fetch骨架的复用）
+
+const STUDYROOMS = [
+  { name: '楠苑一楼自习室', building: '楠苑', floor: 1, seats: 120, occupied: 86, status: '开放', hours: '08:00-22:30' },
+  { name: '楠苑二楼自习室', building: '楠苑', floor: 2, seats: 96, occupied: 61, status: '开放', hours: '08:00-22:30' },
+  { name: '楠苑三楼研讨自习室', building: '楠苑', floor: 3, seats: 48, occupied: 33, status: '开放', hours: '09:00-21:00' },
+  { name: '梓苑一楼自习室', building: '梓苑', floor: 1, seats: 140, occupied: 92, status: '开放', hours: '08:00-22:30' },
+  { name: '梓苑二楼自习室', building: '梓苑', floor: 2, seats: 88, occupied: 0, status: '维修', hours: '暂停开放' },
+  { name: '图书馆一楼自习区', building: '图书馆', floor: 1, seats: 160, occupied: 118, status: '开放', hours: '07:30-23:00' },
+  { name: '图书馆二楼自习区', building: '图书馆', floor: 2, seats: 130, occupied: 95, status: '开放', hours: '07:30-23:00' },
+  { name: '图书馆三楼静音自习室', building: '图书馆', floor: 3, seats: 60, occupied: 58, status: '开放', hours: '08:00-22:00' },
+  { name: '理科楼一层通宵自习室', building: '理科楼', floor: 1, seats: 80, occupied: 41, status: '开放', hours: '全天开放' },
+  { name: '理科楼三层自习室', building: '理科楼', floor: 3, seats: 72, occupied: 0, status: '闭馆', hours: '08:00-22:00' },
+  { name: '文科楼二层自习室', building: '文科楼', floor: 2, seats: 66, occupied: 52, status: '开放', hours: '08:00-22:00' },
+  { name: '文科楼四层考研自习室', building: '文科楼', floor: 4, seats: 110, occupied: 103, status: '开放', hours: '07:00-23:30' }
+];
+
+const statusEl = document.querySelector('#status');
+
+// ── 首页概览卡片 ──
+const renderSummary = () => {
+  const open = STUDYROOMS.filter(r => r.status === '开放').length;
+  const seats = STUDYROOMS.reduce((sum, r) => sum + r.seats, 0);
+  const free = STUDYROOMS.reduce((sum, r) => sum + (r.seats - r.occupied), 0);
+  const cards = [
+    { label: '自习室总数', value: STUDYROOMS.length },
+    { label: '当前开放', value: open },
+    { label: '总座位数', value: seats },
+    { label: '空余座位', value: free }
+  ];
+  const box = document.querySelector('#summary-cards');
+  box.innerHTML = '';
+  cards.forEach(c => {
+    box.insertAdjacentHTML('beforeend', `
+      <div class="col-6 col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title h6">${c.label}</h3>
+            <p class="card-text fs-4">${c.value}</p>
+          </div>
+        </div>
+      </div>
+    `);
+  });
+};
+
+renderSummary();
