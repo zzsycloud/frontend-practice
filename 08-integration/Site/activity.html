@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>光影摄影社 · 外拍活动登记</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/nav.js" defer></script>
+  <script src="js/storage.js" defer></script>
+  <script src="js/activity.js" defer></script>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <div class="container">
+    <div class="page-header">
+      <h1>🏞️ 秋季外拍活动登记与费用统计</h1>
+      <p>登记参加外拍的社员及租赁器材，系统自动计算费用并按器材分组排序。活动费固定 30 元/人。</p>
+    </div>
+
+    <section class="block card">
+      <form id="activityForm" class="inline-form" novalidate>
+        <input type="text" id="act-name" placeholder="姓名 *" required>
+        <input type="tel" id="act-phone" placeholder="手机号 *" maxlength="11" required>
+        <select id="act-gear">
+          <option value="无">不租器材（0 元）</option>
+          <option value="机身">机身（0 元，自带）</option>
+          <option value="三脚架">三脚架（20 元）</option>
+          <option value="镜头">镜头（50 元）</option>
+        </select>
+        <button type="submit" class="btn">登记</button>
+        <button type="button" id="load-demo" class="btn secondary">导入示例数据</button>
+      </form>
+      <p id="act-msg" class="msg"></p>
+    </section>
+
+    <section class="block">
+      <div class="stats">
+        <div class="stat"><div class="num" id="stat-count">0</div><div class="label">合法报名人数</div></div>
+        <div class="stat"><div class="num" id="stat-rent">0</div><div class="label">器材租赁费（元）</div></div>
+        <div class="stat"><div class="num" id="stat-activity">0</div><div class="label">活动费（元）</div></div>
+        <div class="stat"><div class="num" id="stat-total">0</div><div class="label">总费用（元）</div></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>报名名单 <small class="hint" style="font-size:0.8rem;">（先按器材排序，同器材按总费用降序）</small></h2>
+      <div class="table-wrap">
+        <table class="data">
+          <thead>
+            <tr><th>#</th><th>姓名</th><th>手机号</th><th>租赁器材</th><th>租赁费</th><th>活动费</th><th>小计</th><th>操作</th></tr>
+          </thead>
+          <tbody id="act-list"></tbody>
+        </table>
+      </div>
+      <p style="margin-top: 14px;">
+        <button id="export-act" class="btn success small">导出 JSON</button>
+        <button id="clear-act" class="btn danger small">清空名单</button>
+      </p>
+    </section>
+
+    <section class="block">
+      <h2>器材分组汇总</h2>
+      <div id="gear-summary" class="stats"></div>
+    </section>
+  </div>
+
+  <div id="site-footer"></div>
+</body>
+</html>
