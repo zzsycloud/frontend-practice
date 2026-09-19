@@ -47,3 +47,34 @@ const renderSummary = () => {
 };
 
 renderSummary();
+
+// ── 自习室筛选（课堂五事件模式的复用）──
+const badgeClass = { '开放': 'text-bg-success', '闭馆': 'text-bg-secondary', '维修': 'text-bg-warning' };
+
+const renderRooms = () => {
+  const floor = document.querySelector('#floor-filter').value;
+  const status = document.querySelector('#status-filter').value;
+  const shown = STUDYROOMS.filter(r =>
+    (floor === 'all' || r.floor === Number(floor)) &&
+    (status === 'all' || r.status === status)
+  );
+  const list = document.querySelector('#room-list');
+  list.innerHTML = '';
+  if (shown.length === 0) {
+    list.innerHTML = '<li class="list-group-item">没有符合条件的自习室</li>';
+    return;
+  }
+  shown.forEach(r => {
+    list.insertAdjacentHTML('beforeend', `
+      <li class="list-group-item">
+        <span>${r.name} · ${r.building}${r.floor}层 · 空余${r.seats - r.occupied}座</span>
+        <span class="badge ${badgeClass[r.status]}">${r.status} · ${r.hours}</span>
+      </li>
+    `);
+  });
+};
+
+document.querySelector('#floor-filter').addEventListener('change', renderRooms);
+document.querySelector('#status-filter').addEventListener('change', renderRooms);
+
+renderRooms();
