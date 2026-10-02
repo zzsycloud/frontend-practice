@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>光影摄影社 · 外拍费用统计</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/stats.js" defer></script>
+</head>
+<body>
+    <!-- ===== 导航栏（三个模块共享） ===== -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top shadow">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><span class="gold">📷</span> 光影摄影社</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">招新首页</a></li>
+                    <li class="nav-item"><a class="nav-link" href="works.html">作品管理</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="stats.html">费用统计</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mb-5">
+        <h2 class="fw-bold text-center mb-2 mt-2">摄影社秋季外拍活动统计小工具</h2>
+        <p class="text-center text-muted">
+            点击下方按钮运行统计；也可按 <kbd>F12</kbd> 打开控制台查看 <code>console.table</code> 的完整输出。
+        </p>
+
+        <div class="text-center mb-4">
+            <button id="run-btn" class="btn btn-dark btn-lg">运行费用统计</button>
+        </div>
+
+        <div class="panel">
+            <h5 class="fw-bold">① 合法报名名单（数据清洗后）</h5>
+            <div id="valid-table"></div>
+
+            <h5 class="fw-bold mt-4">② 按器材升序、总费用降序排序</h5>
+            <div id="sorted-table"></div>
+
+            <h5 class="fw-bold mt-4">③ 活动总费用</h5>
+            <div id="total-fee"></div>
+
+            <h5 class="fw-bold mt-4">④ 运行日志（含非法数据拦截与性能对比）</h5>
+            <pre id="log-box" class="log-box">点击「运行费用统计」查看结果…</pre>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container text-center">
+            <p class="mb-0">© 2026 光影摄影社 · 外拍费用统计工具</p>
+            <p class="small mt-1">演示数组 / 对象 / JSON 数据的清洗、校验、排序与汇总</p>
+        </div>
+    </footer>
+</body>
+</html>
