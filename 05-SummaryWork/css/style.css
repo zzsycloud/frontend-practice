@@ -1,0 +1,216 @@
+/* ============================================================
+   光影摄影社 · 综合平台  共享样式表
+   由三个子作品整合而来：
+   1) 招新展示页（原 03-SummaryHomework）
+   2) 作品管理系统（原 mine）
+   3) 外拍费用统计工具（原 TheJavaScript）
+   ============================================================ */
+
+* { box-sizing: border-box; }
+
+body {
+    padding-top: 70px;
+    background: #f8f9fa;
+    color: #333;
+}
+
+/* ---------- 导航栏 ---------- */
+.navbar-brand { font-weight: 700; letter-spacing: 2px; }
+.navbar-brand .gold { color: #ffd700; }
+
+/* ---------- 英雄区（招新页） ---------- */
+.hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #fff;
+    padding: 4rem 0;
+    margin-bottom: 2rem;
+    border-radius: 0 0 30px 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+.hero h1 { font-size: 3rem; font-weight: 700; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); }
+
+/* ---------- 作品卡片（招新页） ---------- */
+.card-photo {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.card-photo:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); }
+.card-photo img { height: 200px; object-fit: cover; width: 100%; }
+.card-photo .card-body { background: #fff; }
+
+/* ---------- 招新表单 ---------- */
+.form-section {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+.form-section .required-star { color: #dc2626; font-weight: 700; margin-left: 2px; }
+.form-section .hint { color: #475569; font-size: 0.95rem; }
+.form-section fieldset {
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem 1.5rem;
+    background: #fafbfc;
+    margin-bottom: 1.5rem;
+}
+.form-section legend {
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 0 10px;
+    width: auto;
+    float: none;
+}
+.form-section .form-group { margin-bottom: 1rem; }
+.form-section .form-group label { font-weight: 500; margin-bottom: 0.25rem; }
+.form-section .inline-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    align-items: center;
+    padding-top: 0.25rem;
+}
+.form-section .form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+.form-section .form-actions .btn { min-width: 120px; border-radius: 30px; font-weight: 600; }
+
+/* ---------- 页脚 ---------- */
+footer.site-footer {
+    background: #1a1a2e;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+/* ---------- 作品管理系统（原 mine 的样式，整合进统一卡片容器） ---------- */
+.panel {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+#photo-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+#photo-form input {
+    flex: 1;
+    min-width: 140px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+#photo-form button {
+    padding: 8px 18px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background: #1a1a2e;
+    color: #fff;
+    font-weight: 600;
+}
+
+#error-msg {
+    min-height: 20px;
+    color: #dc2626;
+    font-size: 14px;
+    margin: 0;
+}
+
+#search-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 1rem 0 0.5rem;
+}
+
+#total-count { color: #475569; font-weight: 600; }
+
+#photo-list { list-style-type: none; padding: 0; }
+#photo-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background: #fafbfc;
+}
+.photo-info { flex: 1; }
+
+.delete-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.export-btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* ---------- 费用统计工具 ---------- */
+.stats-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+.stats-table th, .stats-table td {
+    border: 1px solid #e2e8f0;
+    padding: 8px 12px;
+    text-align: center;
+}
+.stats-table th { background: #1a1a2e; color: #fff; }
+.stats-table tbody tr:nth-child(even) { background: #f8f9fa; }
+
+.stat-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #16213e, #0f3460);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0.5rem 0;
+}
+
+.log-box {
+    background: #0f172a;
+    color: #e2e8f0;
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 0.9rem;
+    padding: 1rem 1.25rem;
+    border-radius: 10px;
+    white-space: pre-wrap;
+    line-height: 1.6;
+    max-height: 320px;
+    overflow: auto;
+}
+.log-box .warn { color: #fbbf24; }
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 576px) {
+    .hero h1 { font-size: 2rem; }
+    .hero { padding: 2.5rem 0; border-radius: 0 0 20px 20px; }
+    .form-section, .panel { padding: 1.25rem; }
+    .form-section fieldset { padding: 1rem; }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .card-photo img { height: 180px; }
+}
