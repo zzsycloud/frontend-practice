@@ -1,10 +1,3 @@
-/* ============================================================
-   光影摄影社 · 综合平台  共享样式表
-   由三个子作品整合而来：
-   1) 招新展示页（原 03-SummaryHomework）
-   2) 作品管理系统（原 mine）
-   3) 外拍费用统计工具（原 TheJavaScript）
-   ============================================================ */
 
 * { box-sizing: border-box; }
 
@@ -189,20 +182,6 @@ footer.site-footer {
     font-weight: 700;
     margin: 0.5rem 0;
 }
-
-.log-box {
-    background: #0f172a;
-    color: #e2e8f0;
-    font-family: "Consolas", "Courier New", monospace;
-    font-size: 0.9rem;
-    padding: 1rem 1.25rem;
-    border-radius: 10px;
-    white-space: pre-wrap;
-    line-height: 1.6;
-    max-height: 320px;
-    overflow: auto;
-}
-.log-box .warn { color: #fbbf24; }
 
 /* ---------- 响应式 ---------- */
 @media (max-width: 576px) {

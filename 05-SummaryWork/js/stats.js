@@ -10,10 +10,7 @@ const rawMembers = [
     { name: "", phone: "13100131000", gear: "三脚架", rent: 20, activityFee: 30 }          // 非法姓名
 ];
 
-// 页面日志收集：既打印到控制台，也追加到页面日志框
-const pageLog = [];
 function logLine(text, isWarn = false) {
-    pageLog.push({ text, isWarn });
     if (isWarn) console.warn(text);
     else console.log(text);
 }
@@ -114,7 +111,6 @@ function renderTable(rows, columns) {
 
 // ==================== 4. 主流程 ====================
 function runStatistics() {
-    pageLog.length = 0;
     logLine('=== 摄影社外拍活动费用统计工具启动 ===');
     logLine('1. 开始清洗和校验数据…');
 
@@ -158,11 +154,6 @@ function runStatistics() {
     // ④ 性能对比
     performanceTest(validMembers);
     logLine('统计完成，程序正常退出。');
-
-    // 渲染日志框
-    document.getElementById('log-box').innerHTML = pageLog
-        .map(l => l.isWarn ? `<span class="warn">⚠ ${l.text}</span>` : l.text)
-        .join('\n');
 }
 
 // 绑定按钮；页面加载后自动运行一次，方便直接查看结果
