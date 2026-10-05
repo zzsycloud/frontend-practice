@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>光影摄影社 · A-Frame 展馆</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body { overflow: hidden; }
+    /* a-scene 以 embedded 方式嵌入，固定在导航栏下方铺满视口 */
+    a-scene { position: fixed; inset: 0; top: 60px; }
+    #info-panel {
+      position: fixed; top: 80px; right: 20px; z-index: 10;
+      background: rgba(0,0,0,0.7); color: #fff; padding: 14px 18px;
+      border-radius: 8px; line-height: 1.7; max-width: 260px;
+    }
+    #info-panel h3 { color: var(--accent); font-size: 1rem; margin-bottom: 4px; }
+  </style>
+  <!-- 使用项目自带的 A-Frame 库（随 web 练习一并打包） -->
+  <script src="libs/aframe.min.js"></script>
+  <script src="js/nav.js" defer></script>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <div id="info-panel">
+    <h3>A-Frame 虚拟展馆</h3>
+    鼠标拖拽转视角 / WASD 移动<br>
+    声明式标签即可搭建 3D 场景
+  </div>
+
+  <!-- A-Frame 场景：以声明式实体（entity）+ 组件（component）描述整个 3D 世界 -->
+  <a-scene embedded background="color: #111122">
+    <!-- 资源预加载：把要用的图片贴图先声明出来 -->
+    <a-assets>
+      <img id="p1" src="assets/images/photo1.jpg">
+      <img id="p2" src="assets/images/photo2.jpg">
+      <img id="p3" src="assets/images/photo3.jpg">
+      <img id="p4" src="assets/images/photo4.png">
+    </a-assets>
+
+    <!-- 天空盒 -->
+    <a-sky color="#1a1a2e"></a-sky>
+
+    <!-- 地面（plane 几何体 + 材质） -->
+    <a-plane position="0 0 0" rotation="-90 0 0" width="30" height="30"
+             color="#222233" shadow></a-plane>
+
+    <!-- 光源：环境光 + 平行光 -->
+    <a-light type="ambient" color="#ffffff" intensity="0.6"></a-light>
+    <a-light type="directional" color="#ffffff" intensity="1.0"
+             position="-2 4 2"></a-light>
+
+    <!-- 展厅中央的旋转展台（box 几何体 + animation 组件实现持续旋转动画） -->
+    <a-box position="0 0.5 -1" width="1.2" height="1" depth="1.2"
+           color="#3498db" metalness="0.3" roughness="0.4" shadow
+           animation="property: rotation; to: 0 360 0; loop: true; dur: 8000; easing: linear">
+    </a-box>
+
+    <!-- 展墙上的四幅作品（a-image 实体，src 指向预加载的贴图） -->
+    <a-image src="#p1" position="-4.5 2 -4" width="2.4" height="1.8"></a-image>
+    <a-image src="#p2" position="-1.5 2 -4" width="2.4" height="1.8"></a-image>
+    <a-image src="#p3" position="1.5 2 -4"  width="2.4" height="1.8"></a-image>
+    <a-image src="#p4" position="4.5 2 -4"  width="2.4" height="1.8"></a-image>
+
+    <!-- 标题文字（text 组件） -->
+    <a-text value="PHOTO CLUB  VR GALLERY" align="center" color="#e6c67a"
+            position="0 3.6 -4" width="10"></a-text>
+
+    <!-- 相机 + 交互：look-controls 鼠标转视角，wasd-controls 键盘移动，cursor 作准星 -->
+    <a-entity camera look-controls wasd-controls position="0 1.6 3">
+      <a-cursor color="#e6c67a"></a-cursor>
+    </a-entity>
+  </a-scene>
+</body>
+</html>
