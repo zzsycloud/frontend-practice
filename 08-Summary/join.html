@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>光影摄影社 · 招新报名</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/nav.js" defer></script>
+  <script src="js/storage.js" defer></script>
+  <script src="js/join.js" defer></script>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <div class="container">
+    <div class="page-header">
+      <h1>招新报名</h1>
+      <p>请如实填写以下信息，所有带 <span class="required-star">*</span> 的为必填项。提交后会保存在本地，可在下方名单中查看。</p>
+    </div>
+
+    <section class="block card">
+      <form id="signupForm" class="form" novalidate>
+        <fieldset>
+          <legend>个人信息</legend>
+
+          <div class="form-group">
+            <label for="name">姓名 <span class="required-star">*</span></label>
+            <input type="text" id="name" name="name" required placeholder="请输入真实姓名">
+          </div>
+
+          <div class="form-group">
+            <label for="studentId">学号（11位数字） <span class="required-star">*</span></label>
+            <input type="text" id="studentId" name="studentId" required maxlength="11" placeholder="请输入11位学号">
+          </div>
+
+          <div class="form-group">
+            <label for="phone">手机号 <span class="required-star">*</span></label>
+            <input type="tel" id="phone" name="phone" required maxlength="11" placeholder="11位手机号">
+          </div>
+
+          <div class="form-group">
+            <label for="email">邮箱</label>
+            <input type="email" id="email" name="email" placeholder="example@stu.edu.cn">
+          </div>
+
+          <div class="form-group">
+            <label>性别 <span class="required-star">*</span></label>
+            <div class="radio-group">
+              <input type="radio" id="male" name="gender" value="男"><label for="male">男</label>
+              <input type="radio" id="female" name="gender" value="女"><label for="female">女</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="department">院系</label>
+            <select id="department" name="department">
+              <option value="">请选择</option>
+              <option value="计算机学院">计算机学院</option>
+              <option value="艺术学院">艺术学院</option>
+              <option value="经管学院">经管学院</option>
+              <option value="理学院">理学院</option>
+            </select>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>报名详情</legend>
+
+          <div class="form-group">
+            <label for="level">摄影水平</label>
+            <select id="level" name="level">
+              <option value="初级">初级（热爱即可）</option>
+              <option value="中级">中级（有基础）</option>
+              <option value="高级">高级（熟练后期）</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>擅长领域（可多选）</label>
+            <div class="checkbox-group">
+              <input type="checkbox" id="skill1" name="skills" value="人像"><label for="skill1">人像</label>
+              <input type="checkbox" id="skill2" name="skills" value="风光"><label for="skill2">风光</label>
+              <input type="checkbox" id="skill3" name="skills" value="纪实"><label for="skill3">纪实</label>
+              <input type="checkbox" id="skill4" name="skills" value="微距"><label for="skill4">微距</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="joinDate">预计加入日期</label>
+            <input type="date" id="joinDate" name="joinDate">
+          </div>
+
+          <div class="form-group">
+            <label for="intro">个人简介 / 摄影经历</label>
+            <textarea id="intro" name="intro" rows="3" maxlength="200" placeholder="请简要介绍自己，限200字以内"></textarea>
+          </div>
+        </fieldset>
+
+        <p id="form-msg" class="msg"></p>
+
+        <div class="form-actions">
+          <button type="submit" class="btn">提交报名</button>
+          <button type="reset" class="btn secondary">重置</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="block">
+      <h2>报名名单 <span id="signup-count" class="badge">0 人</span></h2>
+      <input type="text" id="signup-search" class="search-input" placeholder="按姓名 / 学号 / 院系搜索...">
+      <div class="table-wrap">
+        <table class="data">
+          <thead>
+            <tr>
+              <th>姓名</th><th>学号</th><th>手机号</th><th>院系</th>
+              <th>水平</th><th>擅长</th><th>提交时间</th><th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="signup-list"></tbody>
+        </table>
+      </div>
+      <p style="margin-top: 14px;">
+        <button id="export-signups" class="btn success small">导出 JSON</button>
+        <button id="clear-signups" class="btn danger small">清空名单</button>
+      </p>
+    </section>
+  </div>
+
+  <div id="site-footer"></div>
+</body>
+</html>
